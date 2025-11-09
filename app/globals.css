@@ -222,6 +222,14 @@ body,
   display: none;
 }
 
+/* Subtle grain (no external asset) */
+.grain {
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1.2px),
+    radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1.2px);
+  background-position: 0 0, 8px 8px;
+  background-size: 16px 16px;
+}
 
 .section-alt {
   background: var(--surface-2);

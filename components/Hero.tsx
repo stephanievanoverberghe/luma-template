@@ -36,20 +36,22 @@ export default function Hero() {
                 {/* Visual */}
                 <div className="md:col-span-6">
                     <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl bg-card ring-1 ring-border shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
-                        {/* subtle brand edge (FIX: only outline-1) */}
-                        <div className="pointer-events-none absolute inset-0 rounded-2xl outline-1 outline-brand/15" aria-hidden />
                         <Image
-                            src="/hero-placeholder.png"
-                            alt="Template preview — clean, minimal landing"
+                            src="/hero-light.png"
+                            alt="Luma template — clean modern landing workspace"
                             fill
-                            priority
                             sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
-                            className="object-cover"
+                            className="object-cover only-light"
+                            priority
                         />
-                        {/* corner badge */}
-                        <div className="absolute left-3 top-3">
-                            <span className="badge">Zero bloat</span>
-                        </div>
+                        <Image
+                            src="/hero-dark.png"
+                            alt="Luma template — sleek dark workspace with blue accent light"
+                            fill
+                            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+                            className="object-cover only-dark"
+                            priority
+                        />
                     </div>
 
                     <p className="mt-3 text-center text-sm text-muted">Swap colors & copy via CSS variables and config — no refactor needed.</p>
