@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
     title: `${site.name} — ${site.tagline}`,
-    description: 'A clean, sellable landing template built with Next.js 14, Tailwind v4 and TypeScript.',
+    description: 'A clean, sellable landing template built with Next.js 16, Tailwind v4 and TypeScript.',
     metadataBase: new URL(site.domain),
     alternates: { canonical: '/' },
     openGraph: {
