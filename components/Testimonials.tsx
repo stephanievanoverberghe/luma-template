@@ -1,4 +1,4 @@
-// components/Testimonials.tsx
+'use client';
 
 type Testimonial = {
     quote: string;
@@ -23,7 +23,17 @@ const getInitials = (name: string) =>
 
 export default function Testimonials() {
     return (
-        <section className="section section-alt" aria-labelledby="testimonials-title">
+        <section className="section section-alt relative overflow-hidden" aria-labelledby="testimonials-title">
+            {/* soft background mesh */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 opacity-[0.15]"
+                style={{
+                    background:
+                        'radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--brand) 18%, transparent), transparent 70%), radial-gradient(circle at 70% 80%, color-mix(in oklab, var(--brand) 10%, transparent), transparent 60%)',
+                }}
+            />
+
             <div className="container text-center max-w-2xl mx-auto">
                 <h2 id="testimonials-title" className="text-3xl font-bold tracking-tight">
                     What people say
@@ -33,27 +43,45 @@ export default function Testimonials() {
 
             <div className="container mt-10 grid gap-6 md:grid-cols-3">
                 {items.map((t) => (
-                    <figure key={t.author + t.role} className="relative card p-6 md:p-7 flex flex-col justify-between transition-transform duration-200 hover:-translate-y-0.5">
+                    <figure
+                        key={t.author + t.role}
+                        className="relative card p-6 md:p-7 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                    >
                         {/* Accent top bar */}
                         <div className="absolute left-0 right-0 top-0 h-1 bg-brand/20 rounded-t-2xl" aria-hidden />
 
-                        {/* Quote body */}
+                        {/* Quote */}
                         <blockquote className="relative text-lg leading-relaxed">
-                            {/* Decorative opening quote */}
                             <span aria-hidden className="absolute -left-2 -top-2 text-4xl text-brand/30 select-none">
                                 “
                             </span>
-                            <span className="pl-4 block"> {t.quote} </span>
+                            <span className="pl-4 block">{t.quote}</span>
                         </blockquote>
 
                         {/* Footer */}
                         <figcaption className="mt-6 flex items-center gap-3">
-                            {/* Avatar (auto-initials, no images) */}
-                            <span aria-hidden className="grid h-10 w-10 place-items-center rounded-full bg-accent text-foreground font-semibold" title={t.author}>
+                            {/* Avatar stylisé avec texture brandée */}
+                            <span
+                                aria-hidden
+                                className="relative grid h-10 w-10 place-items-center rounded-full text-white font-semibold shadow-md"
+                                style={{
+                                    background:
+                                        'linear-gradient(135deg, color-mix(in oklab, var(--brand) 85%, transparent) 0%, color-mix(in oklab, var(--brand) 60%, var(--surface-2)) 100%)',
+                                }}
+                                title={t.author}
+                            >
                                 {getInitials(t.author)}
+                                <span
+                                    aria-hidden
+                                    className="absolute inset-0 rounded-full opacity-25 mix-blend-overlay"
+                                    style={{
+                                        background: 'url(/textures/grain.png)',
+                                        backgroundSize: '120%',
+                                    }}
+                                />
                             </span>
 
-                            <div className="text-sm">
+                            <div className="text-sm text-left">
                                 <div className="font-semibold text-foreground">{t.author}</div>
                                 <div className="text-muted">{t.role}</div>
                             </div>
@@ -62,7 +90,7 @@ export default function Testimonials() {
                 ))}
             </div>
 
-            {/* Reassurance microcopy */}
+            {/* Closing line */}
             <div className="container mt-8 text-center text-sm text-muted">Loved by indie makers, studios, and fast-moving teams</div>
         </section>
     );
