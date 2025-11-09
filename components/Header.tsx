@@ -41,9 +41,7 @@ export default function Header() {
         if (!open) return;
         const onClick = (e: MouseEvent) => {
             const target = e.target as Node;
-            if (panelRef.current && !panelRef.current.contains(target)) {
-                setOpen(false);
-            }
+            if (panelRef.current && !panelRef.current.contains(target)) setOpen(false);
         };
         document.addEventListener('click', onClick);
         return () => document.removeEventListener('click', onClick);
@@ -53,7 +51,6 @@ export default function Header() {
         <header
             className={[
                 'sticky top-0 z-50',
-                // base = transparent / blur only when supported
                 'supports-backdrop-filter:backdrop-blur',
                 scrolled ? 'bg-card/80 border-b border-border shadow-sm' : 'bg-transparent',
                 'transition-colors duration-200',
@@ -61,7 +58,6 @@ export default function Header() {
             ].join(' ')}
         >
             <div className="container flex items-center justify-between h-14">
-                {/* Left: brand */}
                 <Link href="/" className="font-semibold tracking-tight">
                     {site.name}
                 </Link>
@@ -75,10 +71,10 @@ export default function Header() {
                             className={[
                                 'group',
                                 'text-muted hover:text-foreground transition-colors',
-                                // underline effect via background-size trick (no custom CSS needed)
-                                'bg-gradient-to-r from-brand to-brand',
-                                'bg-[length:0%_2px] bg-no-repeat bg-[0_100%]',
-                                'hover:bg-[length:100%_2px] transition-[background-size] duration-200',
+                                // underline via background-size (Tailwind v4 canonical)
+                                'bg-linear-to-r from-brand to-brand',
+                                'bg-size-[0%_2px] bg-no-repeat bg-[0_100%]',
+                                'hover:bg-size-[100%_2px] transition-[background-size] duration-200',
                             ].join(' ')}
                         >
                             {n.label}
@@ -92,7 +88,7 @@ export default function Header() {
                     </a>
                 </nav>
 
-                {/* Mobile actions (switch + burger) */}
+                {/* Mobile actions */}
                 <div className="md:hidden flex items-center gap-2">
                     <ThemeSwitch />
                     <button
@@ -115,17 +111,14 @@ export default function Header() {
             {/* Mobile overlay + sheet */}
             {open && (
                 <div className="md:hidden">
-                    {/* Overlay */}
                     <div className="fixed inset-0 bg-black/30 backdrop-blur-[1px]" />
-
-                    {/* Sheet */}
                     <div
                         id="mobile-menu"
                         ref={panelRef}
                         className={[
                             'fixed left-0 right-0 top-0',
-                            'mt-14', // start below header
-                            'mx-0 rounded-none', // full width strip
+                            'mt-14',
+                            'mx-0 rounded-none',
                             'bg-card border-t border-border',
                             'shadow-[0_12px_30px_rgba(0,0,0,0.18)]',
                             'transition-transform duration-200',

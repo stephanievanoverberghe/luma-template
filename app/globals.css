@@ -209,6 +209,20 @@ body,
   width: 100%;
 }
 
+/* Light/Dark image toggles compatible with data-theme */
+.only-dark {
+  display: none;
+}
+
+[data-theme='dark'] .only-dark {
+  display: block;
+}
+
+[data-theme='dark'] .only-light {
+  display: none;
+}
+
+
 .section-alt {
   background: var(--surface-2);
 }
