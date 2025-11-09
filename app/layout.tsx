@@ -58,3 +58,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </html>
     );
 }
+
+{
+    /* JSON-LD Product */
+}
+<script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: 'Luma — Minimal Next.js Landing Template',
+            description: 'Clean, sellable landing template. Next.js + Tailwind, light/dark, zero bloat.',
+            image: [`${site.domain}/og/og-cover.jpg`],
+            brand: { '@type': 'Brand', name: 'Luma' },
+            offers: {
+                '@type': 'Offer',
+                priceCurrency: 'EUR',
+                price: '39',
+                url: `${site.domain}`,
+                availability: 'https://schema.org/InStock',
+            },
+            aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.9',
+                reviewCount: '52',
+            },
+        }),
+    }}
+/>;
