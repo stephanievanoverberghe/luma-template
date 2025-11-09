@@ -1,3 +1,4 @@
+// components/About.tsx
 import Image from 'next/image';
 
 export default function About() {
@@ -17,9 +18,9 @@ export default function About() {
                     <h2 className="text-3xl font-bold tracking-tight">About this template</h2>
                     <p className="mt-4 text-muted">A minimal landing starter built with modern best practices. Customize quickly and sell as a template.</p>
                     <ul className="mt-4 space-y-2 text-muted">
-                        <li>• Zero backend, zero DB</li>
-                        <li>• Accessible, responsive layout</li>
-                        <li>• Simple, readable code structure</li>
+                        <li>• Zero backend, zero database</li>
+                        <li>• Accessible and fully responsive</li>
+                        <li>• Readable code and clear structure</li>
                     </ul>
                 </div>
             </div>

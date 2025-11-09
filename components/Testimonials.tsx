@@ -1,3 +1,4 @@
+// components/Testimonials.tsx
 export default function Testimonials() {
     const items = [
         { quote: 'Perfect base for my startup landing. Clean, fast, and easy to tweak.', author: 'Alex M.', role: 'Founder, Seed Studio' },
@@ -6,7 +7,7 @@ export default function Testimonials() {
     ];
 
     return (
-        <section className="section">
+        <section className="section section-alt">
             <div className="container text-center max-w-2xl mx-auto">
                 <h2 className="text-3xl font-bold tracking-tight">What people say</h2>
                 <p className="mt-3 text-muted">Simple, elegant, effective.</p>
@@ -17,7 +18,7 @@ export default function Testimonials() {
                     <figure key={i} className="card p-6 text-left">
                         <blockquote className="text-lg leading-relaxed">“{t.quote}”</blockquote>
                         <figcaption className="mt-4 text-sm text-muted">
-                            <span className="font-semibold text-(--fg)">{t.author}</span> — {t.role}
+                            <span className="font-semibold text-foreground">{t.author}</span> — {t.role}
                         </figcaption>
                     </figure>
                 ))}

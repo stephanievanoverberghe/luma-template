@@ -1,41 +1,33 @@
+// app/layout.tsx
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Inter } from 'next/font/google';
+import { site } from '@/site.config';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-    title: 'Luma — Minimal Next.js 14 Landing',
+    title: `${site.name} — ${site.tagline}`,
     description: 'A clean, sellable landing template built with Next.js 14, Tailwind v4 and TypeScript.',
-    metadataBase: new URL('https://example.com'), // ← à remplacer
+    metadataBase: new URL(site.domain),
     alternates: { canonical: '/' },
     openGraph: {
-        title: 'Luma — Minimal Next.js 14 Landing',
+        title: `${site.name} — ${site.tagline}`,
         description: 'Clean structure, modern design, zero bloat.',
-        url: 'https://example.com', // ← à remplacer
-        siteName: 'Luma',
+        url: site.domain,
+        siteName: site.name,
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Luma — Minimal Next.js 14 Landing',
+        title: `${site.name} — ${site.tagline}`,
         description: 'Clean structure, modern design, zero bloat.',
     },
-    icons: {
-        icon: [
-            { url: '/favicon.ico', sizes: 'any' },
-            { url: '/favicon.svg', type: 'image/svg+xml' },
-        ],
-        apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
-        other: [{ rel: 'manifest', url: '/site.webmanifest' }],
-    },
-    robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
     width: 'device-width',
     initialScale: 1,
-    viewportFit: 'cover',
     colorScheme: 'light dark',
     themeColor: [
         { media: '(prefers-color-scheme: light)', color: '#f7fbff' },
@@ -43,19 +35,26 @@ export const viewport: Viewport = {
     ],
 };
 
+const THEME_BOOTSTRAP = `
+(function() {
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = stored === 'light' || stored === 'dark'
+      ? stored
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.dataset.theme = theme;
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="bg-(--bg) text-(--fg) scroll-smooth">
-            <body className={inter.className}>
-                {/* skip-link a11y */}
-                <a
-                    href="#content"
-                    className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:rounded-md focus:bg-(--card) focus:text-(--fg) focus:shadow"
-                >
-                    Skip to content
-                </a>
-                {children}
-            </body>
+        <html lang="en" className="bg-background text-foreground scroll-smooth">
+            <head>
+                {/* Appliquer le thème avant le paint pour éviter le flash */}
+                <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+            </head>
+            <body className={inter.className}>{children}</body>
         </html>
     );
 }
