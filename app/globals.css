@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ===========================
+   THEME (Tailwind v4)
+   =========================== */
+
+/* 🎨 Active preset: Light / Bleu pastel */
+:root {
+  --background: #f7fbff;
+  --foreground: #0b2436;
+  --muted: #5c7487;
+  --card: #ffffff;
+  --border: #e6edf3;
+  --primary: #3b82f6;
+  --primary-contrast: #ffffff;
+  --accent: #dbeafe;
+  --cta: var(--primary);
+  --cta-contrast: var(--primary-contrast);
+}
+
+/* --- PRESET 2: Rose / créatif ---
+:root {
+  --background: #fff7fb;
+  --foreground: #321224;
+  --muted: #7a4a60;
+  --card: #ffffff;
+  --border: #f5e3ee;
+  --primary: #ec4899;
+  --primary-contrast: #ffffff;
+  --accent: #fde2f3;
+  --cta: var(--primary);
+  --cta-contrast: var(--primary-contrast);
+}
+*/
+
+/* --- PRESET 3: Dark mode ---
+:root {
+  --background: #0b0f14;
+  --foreground: #e5eef5;
+  --muted: #9fb0bd;
+  --card: #10161d;
+  --border: #1f2a33;
+  --primary: #60a5fa;
+  --primary-contrast: #0b0f14;
+  --accent: #15202b;
+  --cta: var(--primary);
+  --cta-contrast: var(--primary-contrast);
+}
+*/
+
+/* (Option) auto-dark sans JS : décommente pour activer
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0b0f14;
+    --foreground: #e5eef5;
+    --muted: #9fb0bd;
+    --card: #10161d;
+    --border: #1f2a33;
+    --primary: #60a5fa;
+    --primary-contrast: #0b0f14;
+    --accent: #15202b;
+    --cta: var(--primary);
+    --cta-contrast: var(--primary-contrast);
+  }
+}
+*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* ===========================
+   GLOBALS
+   =========================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--primary) 20%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* motion/contrast préférences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --border: color-mix(in oklab, var(--foreground) 20%, transparent);
+  }
+}
+
+.section {
+  padding-block: clamp(3rem, 6vw, 6rem);
+}
+
+/* Container util (zéro plugin) */
+.container {
+  width: 100%;
+  max-width: 72rem;
+  /* ~1152px */
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+/* Cards & badges */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.125rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  background: var(--cta);
+  color: var(--cta-contrast);
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btn:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+/* Utils */
+.text-muted {
+  color: var(--muted);
+}
+
+.border-default {
+  border-color: var(--border);
+}
+
+.bg-accent {
+  background: var(--accent);
+}
+
+.hr {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
+}
