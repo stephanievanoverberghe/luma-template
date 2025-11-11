@@ -1,11 +1,13 @@
+// site.config.ts
 export const site = {
     name: 'Luma',
-    tagline: 'Minimal Next.js 14 Landing',
-    domain: 'https://example.com', // replace
+    tagline: 'Minimal Next.js 16 Landing',
+    domain: 'https://luma-template-five.vercel.app/',
     nav: [
         { label: 'Features', href: '#features' },
         { label: 'Pricing', href: '#pricing' },
         { label: 'FAQ', href: '#faq' },
+        { label: 'Contact', href: '#contact' },
     ],
     logos: [
         { alt: 'Acme', src: '/logos/acme.svg' },

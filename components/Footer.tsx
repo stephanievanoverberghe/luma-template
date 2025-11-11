@@ -14,6 +14,9 @@ export default function Footer() {
                     <a href="#faq" className="hover:text-foreground transition-colors">
                         FAQ
                     </a>
+                    <a href="#contact" className="hover:text-foreground transition-colors">
+                        Contact
+                    </a>
                 </nav>
 
                 {/* Center — brand */}

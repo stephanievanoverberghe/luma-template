@@ -71,7 +71,6 @@ export default function Header() {
                             className={[
                                 'group',
                                 'text-muted hover:text-foreground transition-colors',
-                                // underline via background-size (Tailwind v4 canonical)
                                 'bg-linear-to-r from-brand to-brand',
                                 'bg-size-[0%_2px] bg-no-repeat bg-[0_100%]',
                                 'hover:bg-size-[100%_2px] transition-[background-size] duration-200',

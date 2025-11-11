@@ -10,6 +10,7 @@ import FAQ from '@/components/FAQ';
 import Testimonials from '@/components/Testimonials';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import Contact from '@/components/Contact';
 
 export default function Page() {
     return (
@@ -24,6 +25,7 @@ export default function Page() {
                 <Pricing />
                 <FAQ />
                 <Testimonials />
+                <Contact />
                 <CTA />
             </main>
             <Footer />
