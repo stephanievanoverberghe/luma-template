@@ -1,4 +1,5 @@
 // app/page.tsx
+import { Suspense } from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Logos from '@/components/Logos';
@@ -25,7 +26,9 @@ export default function Page() {
                 <Pricing />
                 <FAQ />
                 <Testimonials />
-                <Contact />
+                <Suspense fallback={null}>
+                    <Contact />
+                </Suspense>
                 <CTA />
             </main>
             <Footer />
