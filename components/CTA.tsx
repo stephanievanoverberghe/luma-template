@@ -19,9 +19,9 @@ export default function CTA() {
                     {/* 2) Mockup flouté (light/dark) derrière, très doux */}
                     <div className="absolute inset-0 -z-10 overflow-hidden">
                         {/* Light */}
-                        <Image src="/cta-mock-light.png" alt="" fill sizes="100vw" className="only-light object-cover opacity-15 blur-2xl scale-110" priority />
+                        <Image src="/cta-mock-light.webp" alt="" fill sizes="100vw" className="only-light object-cover opacity-15 blur-2xl scale-110" aria-hidden />
                         {/* Dark */}
-                        <Image src="/cta-mock-dark.png" alt="" fill sizes="100vw" className="only-dark object-cover opacity-15 blur-2xl scale-110" priority />
+                        <Image src="/cta-mock-dark.webp" alt="" fill sizes="100vw" className="only-dark object-cover opacity-15 blur-2xl scale-110" aria-hidden />
                         {/* voile pour lisibilité */}
                         <div className="absolute inset-0 bg-card/30" aria-hidden />
                     </div>

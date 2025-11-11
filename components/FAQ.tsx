@@ -1,6 +1,4 @@
 // components/FAQ.tsx
-'use client';
-
 import { site } from '@/site.config';
 
 export default function FAQ() {
@@ -31,14 +29,8 @@ export default function FAQ() {
                     <details
                         key={i}
                         className="group rounded-xl border border-border bg-card px-4 md:px-6 py-3 md:py-4 shadow-[0_1px_0_var(--border)] open:shadow-[0_8px_24px_rgba(0,0,0,0.06)] transition-shadow"
-                        onToggle={(e) => {
-                            // TS-safe: currentTarget is HTMLDetailsElement
-                            const detailsEl = e.currentTarget as HTMLDetailsElement;
-                            const summary = detailsEl.querySelector('summary');
-                            if (summary) summary.setAttribute('aria-expanded', String(detailsEl.open));
-                        }}
                     >
-                        <summary className="flex items-center gap-3 cursor-pointer list-none select-none" aria-controls={`faq-panel-${i}`} aria-expanded="false">
+                        <summary className="flex items-center gap-3 cursor-pointer list-none select-none" aria-controls={`faq-panel-${i}`}>
                             {/* plus/minus icon */}
                             <span aria-hidden className="relative grid h-6 w-6 place-items-center rounded-md border border-border">
                                 <span className="absolute h-px w-3.5 bg-foreground/70 transition-opacity duration-200" />

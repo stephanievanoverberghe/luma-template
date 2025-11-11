@@ -1,4 +1,4 @@
-'use client';
+// components/Testimonials.tsx
 
 type Testimonial = {
     quote: string;

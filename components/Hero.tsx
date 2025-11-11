@@ -1,6 +1,8 @@
 // components/Hero.tsx
 import Image from 'next/image';
 
+const HERO_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==';
+
 export default function Hero() {
     return (
         <section className="section">
@@ -40,17 +42,23 @@ export default function Hero() {
                             src="/hero-light.png"
                             alt="Luma template — clean modern landing workspace"
                             fill
-                            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+                            sizes="(min-width: 1280px) 640px, (min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
                             className="object-cover only-light"
                             priority
+                            placeholder="blur"
+                            blurDataURL={HERO_BLUR}
+                            fetchPriority="high"
                         />
                         <Image
                             src="/hero-dark.png"
                             alt="Luma template — sleek dark workspace with blue accent light"
                             fill
-                            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+                            sizes="(min-width: 1280px) 640px, (min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
                             className="object-cover only-dark"
                             priority
+                            placeholder="blur"
+                            blurDataURL={HERO_BLUR}
+                            fetchPriority="high"
                         />
                     </div>
 

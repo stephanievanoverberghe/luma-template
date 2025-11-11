@@ -1,7 +1,8 @@
-'use client';
-
+// components/Features.tsx
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+
+const FEATURE_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==';
 
 type Feature = { title: string; desc: string; icon: ReactNode };
 
@@ -59,11 +60,7 @@ export default function Features() {
                             >
                                 <div className="flex items-center gap-3">
                                     {/* always perfectly round */}
-                                    <span
-                                        className="inline-flex h-10 w-10 items-center justify-center rounded-full
-                    bg-accent text-foreground transition-colors duration-200
-                    group-hover:bg-brand/10 group-hover:text-brand"
-                                    >
+                                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent text-foreground transition-colors duration-200 group-hover:bg-brand/10 group-hover:text-brand">
                                         {f.icon}
                                     </span>
                                     <h3 className="text-base font-semibold tracking-tight">{f.title}</h3>
@@ -102,18 +99,20 @@ export default function Features() {
                             src="/features-light.png"
                             alt="Abstract product composition — light theme"
                             fill
-                            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+                            sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
                             className="object-cover only-light"
-                            priority
+                            placeholder="blur"
+                            blurDataURL={FEATURE_BLUR}
                         />
                         {/* Dark */}
                         <Image
                             src="/features-dark.png"
                             alt="Abstract product composition — dark theme"
                             fill
-                            sizes="(min-width: 1024px) 560px, (min-width: 768px) 50vw, 100vw"
+                            sizes="(min-width: 1280px) 520px, (min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
                             className="object-cover only-dark"
-                            priority
+                            placeholder="blur"
+                            blurDataURL={FEATURE_BLUR}
                         />
                     </div>
                 </div>

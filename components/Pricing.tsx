@@ -1,5 +1,4 @@
 // components/Pricing.tsx
-'use client';
 import { site } from '@/site.config';
 
 export default function Pricing() {
@@ -115,29 +114,6 @@ export default function Pricing() {
                     Deploy anywhere
                 </span>
             </div>
-
-            {/* local keyframes for the pulsing glow */}
-            <style jsx>{`
-                .pricing-pulse {
-                    position: absolute;
-                    inset: 0;
-                    border-radius: 1rem;
-                    pointer-events: none;
-                    box-shadow: 0 0 0 0 rgba(25, 109, 245, 0.22);
-                    animation: pulseGlow 2.2s ease-in-out infinite;
-                }
-                @keyframes pulseGlow {
-                    0% {
-                        box-shadow: 0 0 0 0 rgba(25, 109, 245, 0.22);
-                    }
-                    70% {
-                        box-shadow: 0 0 0 18px rgba(25, 109, 245, 0);
-                    }
-                    100% {
-                        box-shadow: 0 0 0 0 rgba(25, 109, 245, 0);
-                    }
-                }
-            `}</style>
         </section>
     );
 }

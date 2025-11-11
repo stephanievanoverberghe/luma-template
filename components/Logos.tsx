@@ -1,6 +1,4 @@
 // components/Logos.tsx
-'use client';
-
 import Image from 'next/image';
 import { site } from '@/site.config';
 
@@ -44,28 +42,6 @@ export default function Logos() {
 
                 <div className="mt-12 h-px w-full bg-border/60" />
             </div>
-
-            <style jsx>{`
-                @media (prefers-reduced-motion: reduce) {
-                    .animate-float-slow {
-                        animation: none !important;
-                    }
-                }
-                @keyframes float-slow {
-                    0% {
-                        transform: translateY(0);
-                    }
-                    50% {
-                        transform: translateY(8px);
-                    }
-                    100% {
-                        transform: translateY(0);
-                    }
-                }
-                .animate-float-slow {
-                    animation: float-slow 16s ease-in-out infinite;
-                }
-            `}</style>
         </section>
     );
 }

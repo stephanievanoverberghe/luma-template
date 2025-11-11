@@ -1,7 +1,7 @@
 // components/About.tsx
-'use client';
-
 import Image from 'next/image';
+
+const ABOUT_BLUR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==';
 
 export default function About() {
     return (
@@ -29,21 +29,23 @@ export default function About() {
 
                     {/* LIGHT image */}
                     <Image
-                        src="/about-light.png" // <- exporte ta version claire ici
+                        src="/about-light.png"
                         alt="Minimal desk in natural light with notebook, mug and laptop"
                         fill
-                        sizes="(min-width:1024px) 560px, (min-width:768px) 50vw, 100vw"
+                        sizes="(min-width:1280px) 560px, (min-width:1024px) 520px, (min-width:768px) 50vw, 100vw"
                         className="only-light object-cover scale-[1.02]"
-                        priority
+                        placeholder="blur"
+                        blurDataURL={ABOUT_BLUR}
                     />
                     {/* DARK image */}
                     <Image
-                        src="/about-dark.png" // <- exporte ta version dark ici
+                        src="/about-dark.png"
                         alt="Minimal desk in moody light with notebook, mug and laptop"
                         fill
-                        sizes="(min-width:1024px) 560px, (min-width:768px) 50vw, 100vw"
+                        sizes="(min-width:1280px) 560px, (min-width:1024px) 520px, (min-width:768px) 50vw, 100vw"
                         className="only-dark object-cover scale-[1.02]"
-                        priority
+                        placeholder="blur"
+                        blurDataURL={ABOUT_BLUR}
                     />
 
                     {/* brand overlay to unify tones */}

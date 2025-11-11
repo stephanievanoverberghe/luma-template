@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import { site } from '@/site.config';
 
@@ -36,54 +37,53 @@ export const viewport: Viewport = {
 };
 
 const THEME_BOOTSTRAP = `
-(function() {
-  try {
-    var stored = localStorage.getItem('theme');
-    var theme = stored === 'light' || stored === 'dark'
-      ? stored
-      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.dataset.theme = theme;
-  } catch (e) {}
-})();
+(
+  function () {
+    try {
+      var stored = localStorage.getItem('theme');
+      var theme = stored === 'light' || stored === 'dark'
+        ? stored
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  }
+)();
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" className="bg-background text-foreground scroll-smooth">
+        <html lang="en" className="bg-background text-foreground scroll-smooth" suppressHydrationWarning>
             <head>
-                {/* Appliquer le thème avant le paint pour éviter le flash */}
-                <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+                <Script id="theme-bootstrap" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP }} />
+                <Script
+                    id="product-jsonld"
+                    type="application/ld+json"
+                    strategy="beforeInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            '@context': 'https://schema.org',
+                            '@type': 'Product',
+                            name: 'Luma — Minimal Next.js Landing Template',
+                            description: 'Clean, sellable landing template. Next.js + Tailwind, light/dark, zero bloat.',
+                            image: [`${site.domain}/og/og-cover.jpg`],
+                            brand: { '@type': 'Brand', name: 'Luma' },
+                            offers: {
+                                '@type': 'Offer',
+                                priceCurrency: 'EUR',
+                                price: '39',
+                                url: `${site.domain}`,
+                                availability: 'https://schema.org/InStock',
+                            },
+                            aggregateRating: {
+                                '@type': 'AggregateRating',
+                                ratingValue: '4.9',
+                                reviewCount: '52',
+                            },
+                        }),
+                    }}
+                />
             </head>
             <body className={inter.className}>{children}</body>
         </html>
     );
 }
-
-{
-    /* JSON-LD Product */
-}
-<script
-    type="application/ld+json"
-    dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Product',
-            name: 'Luma — Minimal Next.js Landing Template',
-            description: 'Clean, sellable landing template. Next.js + Tailwind, light/dark, zero bloat.',
-            image: [`${site.domain}/og/og-cover.jpg`],
-            brand: { '@type': 'Brand', name: 'Luma' },
-            offers: {
-                '@type': 'Offer',
-                priceCurrency: 'EUR',
-                price: '39',
-                url: `${site.domain}`,
-                availability: 'https://schema.org/InStock',
-            },
-            aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: '4.9',
-                reviewCount: '52',
-            },
-        }),
-    }}
-/>;

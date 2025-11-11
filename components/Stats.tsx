@@ -1,5 +1,4 @@
 // components/Stats.tsx
-'use client';
 import { site } from '@/site.config';
 
 export default function Stats() {
@@ -15,7 +14,7 @@ export default function Stats() {
             <div className="container mt-10 grid gap-6 sm:grid-cols-3">
                 {site.stats.map((s) => (
                     <div key={s.label} className="relative p-px rounded-2xl bg-linear-to-b from-brand/10 to-transparent">
-                        <div className="card rounded-2xl p-6 md:p-8 text-center supports-backdrop-filter:backdrop-blur bg-card/80">
+                        <div className="card stats-card rounded-2xl p-6 md:p-8 text-center supports-backdrop-filter:backdrop-blur bg-card/80">
                             <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-brand/30" aria-hidden />
                             <div className="text-4xl md:text-5xl font-bold tracking-tight">{s.value}</div>
                             <div className="text-muted mt-2">{s.label}</div>
@@ -29,15 +28,6 @@ export default function Stats() {
             </div>
 
             <div className="container mt-12 h-px w-full bg-border/60" />
-
-            <style jsx>{`
-                @media (hover: hover) {
-                    .card:hover {
-                        transform: translateY(-2px);
-                        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-                    }
-                }
-            `}</style>
         </section>
     );
 }

@@ -24,6 +24,7 @@ export default function ThemeSwitch() {
         <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
+            aria-pressed
             className="relative inline-flex h-8 w-14 items-center justify-center rounded-full border border-border bg-card transition-all duration-300"
         >
             {/* Soleil (visible en light) */}
